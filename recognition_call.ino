@@ -1,22 +1,18 @@
+//Note that the “WT2605C_Player.h” header file seems to have some errors, please be patient, we will fix it as soon as possible
+
+
 #include <Seeed_Arduino_SSCMA.h>
 #include "WT2605C_Player.h"
-// #include <SoftwareSerial.h>
 #include "time.h"
 HardwareSerial SerialPort(1);
-// SoftwareSerial MySerial(7, 6); //use D7,D6 to simulate RX,TX
 WT2605C<HardwareSerial> Mp3Player;
-
-
-
 SSCMA AI;
 const int LED_PIN = D2;
-
 hw_timer_t * time_recognition = NULL;
-// hw_timer_t * time_swich = NULL;
 bool past_recog = false;
 bool current_recog = false;
 volatile bool recognition_flag = false;
-bool lock_flag = false;
+volatile bool lock_flag = false;
 unsigned long previousMillis = 0;
 const long interval = 5000;  // 5 seconds interval
 void IRAM_ATTR set_recognition_flag() {
@@ -45,10 +41,10 @@ void setup()
     Mp3Player.init(SerialPort);
     Serial.println("initial finished");
     delay(1000);
-    
+    //enable the recognition flag every 1 second
     time_recognition = timerBegin(0, 80, true);
     timerAttachInterrupt(time_recognition, &set_recognition_flag, true);
-    timerAlarmWrite(time_recognition, 1000000, true);  // 0.1 second
+    timerAlarmWrite(time_recognition, 1000000, true);  // 1 second
     timerAlarmEnable(time_recognition);
 }
 
@@ -98,24 +94,27 @@ void loop()
       if(!lock_flag)
       {
         past_recog = current_recog;
+          //if no target is detected
         if (!past_recog)
         {
             Mp3Player.stop();
             digitalWrite(LED_PIN, LOW);
             Serial.println("music stop");
         }
+            //if the target is detected
         else
         {
+            //put the audio you want to play on your SD card and name it "test1.mp3"
             playSong("test1.mp3");
             digitalWrite(LED_PIN, HIGH);
         }
         lock_flag = true;  
       }
+        //For less frequent interruptions of the recognition results, the setting is set to read the recognition status every 5 seconds
       unsigned long currentMillis = millis();
       if (currentMillis - previousMillis >= interval)
       {
           previousMillis = currentMillis;
-          // Place periodic tasks here
           lock_flag = false;
       }
     }
@@ -123,9 +122,9 @@ void loop()
 }
 
 int playSong(const char* fileName){
-    // if (index == 0){
-    //     return 0;
-    // }
+     if (index == 0){
+         return 0;
+     }
     Mp3Player.playSDSong(fileName);
     Serial.println("Play music: " + String(fileName));
     return 1;
