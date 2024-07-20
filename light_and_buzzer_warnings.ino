@@ -3,7 +3,7 @@
 
 SSCMA AI;
 
-#define  LED_PIN  D2
+#define  LED_PIN  D0
 #define USER_BUZZER D6
 #define PWM_PERIOD 255
 
