@@ -215,10 +215,10 @@ If you want to use a specific audio as a warning, the [MP3 V4.0](https://www.see
 The code structure is as follows
 
 1. Includes libraries:
-   - Seeed_Arduin_SSCMA.h`: Enables the inference function of Grove Vision AI V2.
+- Seeed_Arduin_SSCMA.h`: Enables the inference function of Grove Vision AI V2.
      
 2. object declaration:
-   - SSCMA AI : Creates an instance of the SSCMA class for inference.
+- SSCMA AI : Creates an instance of the SSCMA class for inference.
 
 3. two hardware timers:
 - timer0: used for target recognition (triggered once per second)
