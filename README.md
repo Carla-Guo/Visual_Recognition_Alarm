@@ -37,7 +37,7 @@ The tutorials and procedures in this article can be used on XIAO ESP32 series pr
 
 In addition to the master MCU, we need to prepare the Grove Vision AI V2 and supported cameras in order to complete the content of this project.
 
-<div style={{textAlign:'center'}}><img src="https://files.seeedstudio.com/wiki/grove-vision-ai-v2/00.jpg" style={{width:500, height:'auto'}}/></div>
+![00](https://github.com/user-attachments/assets/76156c4a-6476-490b-b109-68785fe8d2f9)
 
 <div class="get_one_now_container" style={{textAlign: 'center'}}>
     <a class="get_one_now_item" href="https://www.seeedstudio.com/Grove-Vision-AI-V2-Kit-p-5852.html">
@@ -78,6 +78,8 @@ This is an example of face recognition, if you want to target pets, you can use 
 
 Here we use the [Expansion Board Base for XIAO (with buzzer)](https://www.seeedstudio.com/Seeeduino-XIAO-Expansion-board-p-4746.html) for ease of wiring, the Grove Vision AI V2 is simply connected to the IIC interface of the XIAO through the Grove interface, and the [Grove-Red LED](https://www.seeedstudio.com/Grove-Red-LED.html) is connected to the A0-D0 port of the expansion board.
 
+![1721491991143](https://github.com/user-attachments/assets/69c6a665-4329-4442-9932-7d565860b5cd)
+
 Below is the complete program for this project, please compile and upload this program for XIAO ESP32 series.
 
 ```cpp
@@ -86,7 +88,7 @@ Below is the complete program for this project, please compile and upload this p
 
 SSCMA AI;
 
-#define  LED_PIN  D2
+#define  LED_PIN  D0
 #define USER_BUZZER D6
 #define PWM_PERIOD 255
 
