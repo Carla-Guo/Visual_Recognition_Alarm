@@ -202,7 +202,7 @@ void loop()
 }
 
 ```
-If the programme runs smoothly, you should see the effect shown below.
+If the programme runs smoothly, you should see the effect shown as the vedio in the result.zip.
 
 :::note
 
