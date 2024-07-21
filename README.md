@@ -70,7 +70,7 @@ For this project we are going to use face recognition as an example, so that we 
 
 :::tip
 
-This is an example of face recognition, if you want to target pets, you can use SenseCraft AI to upload a model for “Pet Recognition” and it will work just as well.
+This is an example of face recognition, if you want to target pets, you can use SenseCraft AI to upload a model for “Pet Detection” and it will work just as well.
 
 :::
 
