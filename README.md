@@ -204,12 +204,40 @@ void loop()
 ```
 If the programme runs smoothly, you should see the effect shown below.
 
-
-
-
-
 :::note
 
 If you want to use a specific audio as a warning, the [MP3 V4.0](https://www.seeedstudio.com/Grove-MP3-V4-p-5862.html) need to be added. Download your audio to an SD card and rename it "test1.mp3", insert the SD into the card slot of the MP3 module, plug the module into the UART port of the expansion board and upload the "light_and_audio_warning.ino" into XIAO-C3.(However, the “WT2605C_Player.h” header file seems to have some errors, please be patient, we will fix it as soon as possible)
 
 :::
+
+### Program annotation
+
+The code structure is as follows
+
+1. Includes libraries:
+   - Seeed_Arduin_SSCMA.h`: Enables the inference function of Grove Vision AI V2.
+     
+2. object declaration:
+   - SSCMA AI : Creates an instance of the SSCMA class for inference.
+
+3. two hardware timers:
+- timer0: used for target recognition (triggered once per second)
+- timer2: for buzzer control (triggered every 10 microseconds).
+  
+4. set_recognition_flag .
+- Interrupt service program for recognition timer, set recognition_flag to true to indicate the need to perform the recognition task.
+  
+5. func_buzzer :
+- Control the PWM signal of buzzer, through buzzerCount and buzzerValue to control the buzzer on and off.
+  
+6. setup_function:
+- Initializes the Grove Vision AI V2 and serial communications and configures the LED pin (D0) and buzzer (D6) as outputs.
+  
+7. loop function:
+- Check if recognition_flag is set to true, if yes, call AI.invoke() for target recognition.
+- After successful recognition, print the recognition result and update current_recog.
+- If the recognition status changes (from recognized to not recognized or vice versa), update the status of the LED and buzzer.
+
+
+
+
