@@ -217,7 +217,7 @@ The code structure is as follows
 1. Include necessary libraries:
 - Seeed_Arduin_SSCMA.h`: Enables the inference function of Grove Vision AI V2.
      
-2.Define constants::
+2.Define constants:
 - SSCMA AI : Creates an instance of the SSCMA class for inference.
 
 3. two hardware timers:
